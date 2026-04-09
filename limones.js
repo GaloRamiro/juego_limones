@@ -11,6 +11,7 @@ let personajeY = canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE );
 let limonX =canvas.width/2;
 let limonY=0;
  let vidas=5;
+ let velocidadCaida=200;
 
 let punaje =0;
 
@@ -25,6 +26,7 @@ function dibujarPersonaje(){
 }
 
 function inciar(){
+    setInterval(bajarLimon,velocidadCaida);//primeraramtero funcion segunto dle timepo
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
