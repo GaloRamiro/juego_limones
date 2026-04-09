@@ -7,8 +7,9 @@ const ANCHO_PERSONAJE = 40;
 const ANCHO_LIMON = 20;
 const ALTO_LIMON=20;
 let personajeX = canvas.width/2;
+let personajeY = canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE );
 let limonX =canvas.width/2;
-let limonY=5;
+let limonY=0;
 
 function dibujarSuelo(){
     ctx.fillStyle= "blue";
@@ -17,7 +18,7 @@ function dibujarSuelo(){
 
 function dibujarPersonaje(){
     ctx.fillStyle= "yellow";
-    ctx.fillRect(personajeX,canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE ) , ANCHO_PERSONAJE,ALTURA_PERSONAJE );
+    ctx.fillRect(personajeX, personajeY , ANCHO_PERSONAJE,ALTURA_PERSONAJE );
 }
 
 function inciar(){
@@ -30,12 +31,14 @@ function inciar(){
 function moverIzquierda(){
     personajeX=personajeX-10;
     actualizarPantalla();
+    detectarColicion();
 
 }
 
 function moverDerecha(){
     personajeX=personajeX+10;
-    actualizarPantalla()
+    actualizarPantalla();
+    detectarColicion();
 }
 function actualizarPantalla(){
     limpiarCanva();
@@ -54,4 +57,13 @@ function dibujarLimon(){
 function bajarLimon(){
     limonY = limonY + 10;
     actualizarPantalla();
+    
+}
+function detectarColicion(){
+    if(limonX + ANCHO_LIMON>personajeX  &&
+       limonX < personajeX+ ANCHO_PERSONAJE &&
+       limonY + ALTO_LIMON > personajeY  &&
+       limonY < personajeY+ ALTURA_PERSONAJE){
+       alert("MUERTO  XXX");
+    }
 }
