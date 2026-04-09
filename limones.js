@@ -10,6 +10,9 @@ let personajeX = canvas.width/2;
 let personajeY = canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE );
 let limonX =canvas.width/2;
 let limonY=0;
+ let vidas=5;
+
+let punaje =0;
 
 function dibujarSuelo(){
     ctx.fillStyle= "blue";
@@ -61,6 +64,7 @@ function bajarLimon(){
     limonY = limonY + 10;
     actualizarPantalla();
     detectarColicion();
+    detectarPiso();
 }
     
 
@@ -70,14 +74,23 @@ function detectarColicion(){
        limonY + ALTO_LIMON > personajeY  &&
        limonY < personajeY+ ALTURA_PERSONAJE){
        aparecerLimon();
+       punaje = punaje+1;
+
+       mostarEnSpan("txtPuntaje", punaje);
+
     }
 }
-function probarRand(){
-    let  numero = generarAleatorio(10,15);
-    console.log(numero);
-}
+
 function aparecerLimon(){
     limonX=generarAleatorio(0, canvas.width-ANCHO_LIMON)
     limonY=0;
     actualizarPantalla();
+}
+
+function detectarPiso(){
+if (limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
+    aparecerLimon();
+    vidas = vidas-1;
+     mostarEnSpan("txtVidas", vidas);
+}
 }

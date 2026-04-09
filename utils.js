@@ -4,4 +4,8 @@ function generarAleatorio(min, max){
     let numeroEntero = parseInt(numero);
     numeroEntero = numeroEntero+min;
     return numeroEntero
+} 
+function mostarEnSpan(idSpan, valor){
+let componeten = document.getElementById(idSpan);
+       componeten.textContent=valor;
 }
