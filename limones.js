@@ -15,6 +15,7 @@ let limonY=0;
 
 let punaje =0;
 
+
 function dibujarSuelo(){
     ctx.fillStyle= "blue";
     ctx.fillRect(0,canvas.height - ALTURA_SUELO, canvas.width,ALTURA_SUELO);
@@ -96,3 +97,4 @@ if (limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
      mostarEnSpan("txtVidas", vidas);
 }
 }
+
