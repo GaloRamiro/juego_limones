@@ -1,98 +1,223 @@
-/* ===== FONDO CON IMAGEN ESPACIAL ===== */
-body {
+/* RESET */
+* {
   margin: 0;
-  padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
-  color: #e2e8f0;
-  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* FONDO GENERAL */
+body {
+
+  min-height: 150vh;
 
   background: 
-    linear-gradient(rgba(2,6,23,0.85), rgba(2,6,23,0.95)),
-    url("images/fondo.jpg")
-    no-repeat center center / cover;
+    linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,0.9)),
+    url("images/BACK.png") no-repeat center/cover;
+
+  display: flex;
+  justify-content: center;
+
+  /* 🔥 CAMBIO CLAVE */
+  align-items: flex-start;
+
+  padding: 40px 0; /* espacio arriba y abajo */
+  color: #e2e8f0;
 }
 
-/* ===== CONTENEDOR MÁS PRO ===== */
+/* CONTENEDOR PRINCIPAL */
 .contenedor {
-  max-width: 760px;
-  margin: 0 auto;
+  margin-bottom: 200px;
+  min-height: 100vh;
+  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
   padding: 25px;
-  background: rgba(15, 23, 42, 0.85);
-  border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-  backdrop-filter: blur(6px);
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(132, 204, 22, 0.2);
+  border: 1px solid rgba(132, 204, 22, 0.2);
 }
 
-/* ===== CANVAS MEJORADO ===== */
-canvas {
-  display: block;
-  margin: 25px auto;
-  width: 600px;
-  height: 400px;
+/* TITULOS */
+h1 {
+  font-size: 2.2rem;
+  color: #a3e635;
+  text-shadow: 0 0 10px rgba(163, 230, 53, 0.6);
+}
+
+p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+h2 {
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  color: #64748b;
+}
+
+#areaJuego {
+  margin-top: 15px;
+  border-radius: 15px;
   background: #020617;
-  border: 6px solid #334155;
-  border-radius: 10px;
+  position: relative;
+  z-index: 2;
 
   box-shadow: 
-    inset 0 0 40px rgba(0,0,0,0.9),
-    inset 0 20px 40px rgba(255,255,255,0.05),
-    0 10px 30px rgba(0,0,0,0.8);
+    inset 0 0 20px rgba(0,0,0,0.8),
+    0 0 15px rgba(132, 204, 22, 0.2);
 }
 
-/* ===== HUD ===== */
+.contenedor::before {
+  content: "";
+  position: absolute;
+
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 610px;
+  height: 410px;
+  border-radius: 18px;
+
+  padding: 4px;
+
+  /* 🔥 GRADIENTE CON VARIABLE */
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0%,
+    #a3e635 10%,
+    #facc15 20%,
+    transparent 30%
+  );
+
+  /* 🧠 BORDE HUECO */
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  filter: blur(6px);
+  z-index: 1;
+
+  animation: flujoReal 2s linear infinite;
+}
+
+@keyframes flujoBorde {
+  0% {
+    background: conic-gradient(
+      from 0deg,
+      #84cc16,
+      #a3e635,
+      #facc15,
+      #4ade80,
+      #84cc16
+    );
+  }
+
+  100% {
+    background: conic-gradient(
+      from 360deg,
+      #84cc16,
+      #a3e635,
+      #facc15,
+      #4ade80,
+      #84cc16
+    );
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+/* PANEL HUD */
 .panel {
+  margin-top: 15px;
   display: flex;
-  justify-content: space-between;
-  padding: 14px 20px;
-  margin: 20px 0;
-
-  background: rgba(2,6,23,0.9);
+  justify-content: space-around;
+  background: rgba(2, 6, 23, 0.6);
+  padding: 10px;
   border-radius: 10px;
-  border: 1px solid #1e293b;
+  border: 1px solid rgba(132, 204, 22, 0.2);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
 
-/* TEXTO */
+.panel p {
+  font-size: 1rem;
+  color: #e2e8f0;
+}
+
 #txtPuntaje {
-  color: #38bdf8;
+  color: #84cc16;
   font-weight: bold;
+  text-shadow: 0 0 8px rgba(132, 204, 22, 0.7);
 }
 
 #txtVidas {
-  color: #ef4444;
+  color: #facc15;
   font-weight: bold;
+  text-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
 }
 
-/* ===== BOTONES ===== */
-.botones button {
-  margin: 6px;
-  padding: 12px 20px;
-  font-size: 15px;
+/* BOTONES */
+.botones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 10px 18px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-
-  background: #2563eb;
-  color: white;
-
-  box-shadow: 
-    0 4px 0 #1e40af,
-    0 8px 15px rgba(0,0,0,0.4);
-
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: #020617;
+  background: linear-gradient(135deg, #a3e635, #4ade80);
+  box-shadow: 0 5px 15px rgba(132, 204, 22, 0.4);
+  transition: all 0.25s ease;
 }
 
-.botones button:hover {
-  transform: translateY(-2px);
+/* EFECTOS */
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(132, 204, 22, 0.6);
 }
 
-.botones button:active {
-  transform: translateY(2px);
+button:active {
+  transform: scale(0.95);
 }
 
-/* BOTÓN REINICIAR */
-.botones button:last-child {
-  background: #ef4444;
-  box-shadow: 
-    0 4px 0 #991b1b,
-    0 8px 15px rgba(0,0,0,0.4);
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .contenedor {
+    padding: 15px;
+  }
+
+  #areaJuego {
+    width: 100%;
+    height: auto;
+  }
+
+  .botones {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+@keyframes flujoReal {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
 }
