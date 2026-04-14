@@ -10,10 +10,12 @@ let personajeX = canvas.width/2;
 let personajeY = canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE );
 let limonX =canvas.width/2;
 let limonY=0;
- let vidas=5;
- let velocidadCaida=200;
+let vidas=5;
+let velocidadCaida=200;
+let intervalo;// almacenará el setInterval
 
 let punaje =0;
+let juegoActivo = true;
 
 
 function dibujarSuelo(){
@@ -27,7 +29,7 @@ function dibujarPersonaje(){
 }
 
 function inciar(){
-    setInterval(bajarLimon,velocidadCaida);//primeraramtero funcion segunto dle timepo
+    intervalo = setInterval(bajarLimon,velocidadCaida);//primeraramtero funcion segunto dle timepo
     dibujarSuelo();
     dibujarPersonaje();
     aparecerLimon();
@@ -36,17 +38,20 @@ function inciar(){
 }
 
 function moverIzquierda(){
-    personajeX=personajeX-10;
+  if(!juegoActivo) return; //  no se mueve si terminó
+  if(personajeX > 0){
+        personajeX -= 10;
+    }
     actualizarPantalla();
-    
-
 }
 
 function moverDerecha(){
-    personajeX=personajeX+10;
+    if(!juegoActivo) return; //  no se mueve si terminó
+    if(personajeX + ANCHO_PERSONAJE < canvas.width){
+        personajeX += 10;
+    }
     actualizarPantalla();
- } 
-
+}
 
 function actualizarPantalla(){
     limpiarCanva();
@@ -91,10 +96,42 @@ function aparecerLimon(){
 }
 
 function detectarPiso(){
-if (limonY+ALTO_LIMON==canvas.height-ALTURA_SUELO){
-    aparecerLimon();
-    vidas = vidas-1;
-     mostarEnSpan("txtVidas", vidas);
-}
+    if (limonY + ALTO_LIMON >= canvas.height - ALTURA_SUELO){
+
+        aparecerLimon();
+        vidas = vidas - 1;
+        mostarEnSpan("txtVidas", vidas);
+
+        // 👉 verificar GAME OVER
+        if(vidas <= 0){
+            mostarEnSpan("txtVidas", "GAME OVER");
+            juegoActivo = false;
+            clearInterval(intervalo);
+        }
+    }
 }
 
+/* ================= REINICIAR JUEGO ================= */
+function reiniciarJuego(){
+    clearInterval(intervalo); // detener juego anterior
+
+    // Reiniciar valores
+    personajeX = canvas.width / 2;
+    personajeY = canvas.height - (ALTURA_SUELO + ALTURA_PERSONAJE);
+
+    limonX = canvas.width / 2;
+    limonY = 0;
+
+    vidas = 5;
+    punaje = 0;
+
+    // Actualizar interfaz
+    mostarEnSpan("txtVidas", vidas);
+    mostarEnSpan("txtPuntaje", punaje);
+
+    // Dibujar todo limpio
+    actualizarPantalla();
+
+    // Volver a iniciar el juego
+    intervalo = setInterval(bajarLimon, velocidadCaida);
+}
