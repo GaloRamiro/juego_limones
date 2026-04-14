@@ -1,0 +1,30 @@
+Actúa como un diseñador UI/UX especializado en videojuegos.
+
+Tengo un juego web desarrollado en HTML, CSS y JavaScript, y quiero mejorar su diseño visual para que tenga un estilo moderno, atractivo y profesional.
+
+IMPORTANTE:
+
+* No debes modificar el HTML ni el JavaScript.
+* No cambies nombres de clases ni IDs existentes.
+* Solo puedes trabajar con CSS.
+
+Objetivo del diseño:
+
+* Crear una interfaz visual atractiva con temática espacial.
+* Utilizar una imagen de fondo (galaxia o espacio) que haga que el juego se vea más inmersivo.
+* Aplicar una capa oscura encima del fondo para mejorar la legibilidad.
+* Hacer que el canvas (#areaJuego) destaque como el elemento principal, con estilo de pantalla de videojuego.
+* Diseñar un contenedor moderno con transparencia (glassmorphism ligero o fondo oscuro).
+* Crear un HUD limpio para mostrar puntaje y vidas de forma clara.
+* Diseñar botones modernos, con buen feedback visual (hover y click).
+
+Detalles adicionales:
+
+* El fondo debe adaptarse correctamente a toda la pantalla (cover, centrado).
+* Mantener buen contraste entre texto y fondo.
+* Usar sombras suaves y profundidad para dar sensación profesional.
+* Evitar efectos exagerados como neón excesivo o estilos demasiado retro.
+
+Entrega:
+
+* Devuelve únicamente el CSS optimizado, listo para copiar.

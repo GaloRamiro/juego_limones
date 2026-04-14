@@ -1,0 +1,34 @@
+Actúa como un diseñador UI/UX especializado en videojuegos.
+
+Tengo un juego web llamado "Juego Cazando", desarrollado en HTML, CSS y JavaScript. Necesito mejorar completamente la interfaz visual para que tenga un estilo inspirado en Super Mario Galaxy (espacio, colores vivos, estética divertida y pulida).
+
+IMPORTANTE:
+
+* No debes modificar el HTML ni el JavaScript.
+* No cambies nombres de clases ni IDs existentes.
+* Solo puedes trabajar con CSS.
+
+Objetivo del diseño:
+
+* Crear una interfaz visual atractiva inspirada en el espacio (galaxias, estrellas, colores brillantes).
+* Hacer que el canvas (#areaJuego) se vea como un planeta o portal espacial.
+* Diseñar botones con estilo amigable, redondeado y colorido (tipo Nintendo).
+* Organizar los elementos como un HUD limpio y visual.
+* Usar colores vivos (azules, morados, amarillos y blancos) con efectos luminosos.
+* Agregar efectos visuales como brillo, partículas simuladas, glow o degradados espaciales.
+
+Detalles adicionales:
+
+* El fondo debe parecer una galaxia o el espacio con estrellas.
+* Los botones deben tener animaciones suaves (hover y click).
+* Mantener buena legibilidad del texto.
+* El diseño debe ser divertido, moderno y con apariencia profesional.
+
+Opcional:
+
+* Puedes simular estrellas o efectos espaciales con CSS.
+* Agregar sensación de profundidad (sombras, capas).
+
+Entrega:
+
+* Devuelve únicamente el CSS optimizado, listo para copiar.
