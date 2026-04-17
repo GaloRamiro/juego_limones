@@ -9,3 +9,4 @@ function mostarEnSpan(idSpan, valor){
 let componeten = document.getElementById(idSpan);
        componeten.textContent=valor;
 }
+

@@ -6,12 +6,12 @@ const ALTURA_PERSONAJE =60;
 const ANCHO_PERSONAJE = 40;
 const ANCHO_LIMON = 20;
 const ALTO_LIMON=20;
-let personajeX = canvas.width/2;
+let personajeX = canvas.width-ANCHO_PERSONAJE;
 let personajeY = canvas.height -(ALTURA_SUELO+ALTURA_PERSONAJE );
 let limonX =canvas.width/2;
 let limonY=0;
 let vidas=5;
-let velocidadCaida=200;
+let velocidadCaida=50;
 let intervalo;// almacenará el setInterval
 
 let punaje =0;
